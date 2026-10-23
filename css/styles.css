@@ -67,10 +67,6 @@ body {
 	text-align: left;
 }
 
-.rightb{
-	text-align: right;
-}
-
 /* 主标题：窄屏按视口缩小，避免“V2”被挤到第二行 */
 h1 {
   font-size: clamp(1.6rem, 7.2vw, 2.5rem);

@@ -47,13 +47,10 @@ function handlePaste() {
     }
     $("#text-decryped").val(text);
     $("#error-alert").addClass("d-none");
-    const msg = $("#text-decryped").val();
-    const key = $("#text-key").val();
-    if (isAutoEnabled && msg.startsWith("佛又曰：")) {
-      handleDecrypt(msg, key);
-    }
-    if (isAutoEnabled && !msg.startsWith("佛又曰：")) {
-      handleEncrypt(msg, key);
+    if (isAutoEnabled) {
+      // 这两个处理函数自己从输入框取值，无需再传参
+      if (text.startsWith("佛又曰：")) handleDecrypt();
+      else handleEncrypt();
     }
     $("#text-decryped").blur();
   }).catch(err => showError("无法读取剪贴板内容：" + err.message));
