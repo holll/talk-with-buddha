@@ -33,6 +33,11 @@ function handleDecrypt() {
 }
 
 function handlePaste() {
+  // 非 HTTPS（含用局域网 IP / file:// 打开）时浏览器不提供 Clipboard API，
+  // 直接调用会抛 TypeError 且界面上毫无反馈，这里先给出明确提示。
+  if (!navigator.clipboard || !window.isSecureContext) {
+    return showError("当前页面不是 HTTPS，浏览器禁止读取剪贴板，请长按输入框手动粘贴。");
+  }
   handleClean();
   var isAutoEnabled = $("#auto-process").is(":checked");
   navigator.clipboard.readText().then(text => {
@@ -57,6 +62,7 @@ function handlePaste() {
 
 function handleCopy() {
   const text = $("#text-encryped").val();
+  if (!text) return showError("佛的答案尚是空白，暂无可复制的内容。");
   copyToClipboard(text).catch(err => showError("复制失败：" + err.message));
 }
 
@@ -65,7 +71,8 @@ function handleClean() {
   $("#text-encryped").val("");
   $("#copy-alert").addClass("d-none");
   $("#error-alert").addClass("d-none");
-  $("#text-decryped").focus();
+  // 移动端点「清空」不该把键盘顶出来，只在有精确指针（鼠标/触控板）时聚焦
+  if (window.matchMedia("(pointer: fine)").matches) $("#text-decryped").focus();
 }
 
 $("#btn-encrypt").on("click", handleEncrypt);

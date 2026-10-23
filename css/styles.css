@@ -21,10 +21,112 @@ body {
 	padding-bottom: 10px;
 }
 
+/* 底部操作行：窄屏自动换行，按钮文字不拆行 */
+.lowroe-inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.lowroe-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.lowroe .btn {
+  white-space: nowrap;
+}
+
+@media (max-width: 359.98px) {
+  .lowroe .btn {
+    padding: .375rem .5rem;
+  }
+}
+
+/* 提示条：固定浮层，页面滚到任何位置都能看到 */
+#error-alert,
+#copy-alert {
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 24px);
+  max-width: 420px;
+  margin: 0;
+  z-index: 1080;
+  pointer-events: none;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .15);
+}
+
 .leftb{
 	text-align: left;
 }
 
 .rightb{
 	text-align: right;
+}
+
+/* 主标题：窄屏按视口缩小，避免“V2”被挤到第二行 */
+h1 {
+  font-size: clamp(1.6rem, 7.2vw, 2.5rem);
+}
+
+/* 主按钮加深一档，白字对比度由 3.98:1 提到 5.4:1（WCAG AA） */
+.btn-primary {
+  background-color: #0062cc;
+  border-color: #005cbf;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #004fa3;
+  border-color: #004a99;
+}
+
+.footer a {
+  color: #0056b3;
+}
+
+.footer a:hover {
+  color: #003d80;
+}
+
+/* 触屏设备：可点区域放大到至少 44×44（iOS HIG / WCAG 2.5.5） */
+@media (pointer: coarse), (max-width: 575.98px) {
+  .btn {
+    min-height: 44px;
+  }
+
+  .form-check {
+    padding-left: 1.75rem;
+  }
+
+  .form-check-input {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: .1rem;
+    margin-left: -1.75rem;
+  }
+
+  .form-check-label {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+  }
+
+  .footer .text-muted {
+    line-height: 1.75;
+  }
+
+  .footer a {
+    display: inline-block;
+    padding: .2rem 0;
+  }
 }

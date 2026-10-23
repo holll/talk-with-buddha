@@ -5,9 +5,12 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="../../favicon.ico">
+  <meta name="theme-color" content="#0062cc">
+  <meta name="description" content="与佛论禅重制版：一个用于混淆/加密文本的小工具，支持自动加解密。">
+  <meta name="apple-mobile-web-app-title" content="与佛论禅">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
   <title>与佛论禅重制版-holll</title>
 
   <!-- Bootstrap core CSS -->
@@ -24,26 +27,14 @@
 </head>
 
 <body>
+  <!-- 提示条：固定浮层，任何滚动位置都可见 -->
+  <div class="alert alert-danger alert-dismissable d-none" id="error-alert" role="alert"> 不可说,不可说,一说即是错 </div>
+  <div class="alert alert-success alert-dismissable d-none" id="copy-alert" role="alert"> 复制成功 </div>
+
   <div class="container">
     <div class="starter-template">
       <h1>与佛论禅重制版V2</h1>
       <p class="lead">（如果您第一次使用请阅读“普渡众生”）</p>
-    </div>
-    <!--error-->
-    <div class="row">
-      <div class="col-lg-2"></div>
-      <div class="col-12 col-lg-8" id="alert">
-        <div class="alert alert-danger alert-dismissable d-none" id="error-alert" role="alert"> 不可说,不可说,一说即是错 </div>
-      </div>
-      <div class="col-lg-2"></div>
-    </div>
-    <!--success-->
-    <div class="row">
-      <div class="col-lg-2"></div>
-      <div class="col-12 col-lg-8" id="alert">
-        <div class="alert alert-success alert-dismissable d-none" id="copy-alert" role="alert"> 复制成功 </div>
-      </div>
-      <div class="col-lg-2"></div>
     </div>
     <!--main-->
     <div class="row">
@@ -87,14 +78,15 @@
     </div>
     <div class="row lowroe">
       <div class="col-lg-2"></div>
-      <div class="col-4 col-lg-2 leftb">
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#aboutModal">普渡众生</button>
-      </div>
-      <div class="col-1 col-lg-2"> </div>
-      <div class="col-7 col-lg-4 rightb">
-        <button type="button" class="btn btn-primary" id="btn-clean">清空</button>
-        <button type="button" class="btn btn-primary" id="btn-copy">复制</button>
-        <button type="button" class="btn btn-primary" id="btn-paste">粘贴</button>
+      <div class="col-12 col-lg-8">
+        <div class="lowroe-inner">
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#aboutModal">普渡众生</button>
+          <div class="lowroe-actions">
+            <button type="button" class="btn btn-primary" id="btn-clean">清空</button>
+            <button type="button" class="btn btn-primary" id="btn-copy">复制</button>
+            <button type="button" class="btn btn-primary" id="btn-paste">粘贴</button>
+          </div>
+        </div>
       </div>
       <div class="col-lg-2"></div>
     </div>
